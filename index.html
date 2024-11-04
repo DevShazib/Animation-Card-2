@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Card Border</title>
+<style>
+  /* Basic reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Body background color animation using provided colors */
+    @keyframes backgroundColorAnimation {
+      0% { background-color: #0d9fe9; }
+      25% { background-color: #FBD87F; }
+      50% { background-color: #00A6A6; }
+      75% { background-color: #5058f7; }
+      100% { background-color: #d828f0; }
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      animation: backgroundColorAnimation 10s linear infinite; /* Animated body */
+    }
+
+  /* Card styling */
+  .card {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Border animation */
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px;
+    padding: 15px;
+    background: linear-gradient(360deg, #BBDEF0, #FBD87F, #00A6A6, #6369D1, #F75590);
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    animation: border-animation 2.5s infinite;
+  }
+
+  /* Animation keyframes */
+  @keyframes border-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    75% {
+      background: #F75590;
+    }
+    100% {
+      background: transparent;
+    }
+  }
+
+  /* 3D hover effect */
+  .card:hover {
+    transform: rotate(360deg) rotate(1deg);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Card content */
+  .content {
+    padding: 20px;
+  }
+
+  .content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .content p {
+    font-size: 1rem;
+    color: #555;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="content">
+    <h2>Animated Card</h2>
+    <p>This card has a unique border animation with a 3D hover effect.</p>
+  </div>
+</div>
+
+</body>
+</html>
